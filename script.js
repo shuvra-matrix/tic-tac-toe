@@ -2,10 +2,10 @@ let mainSection = document.querySelector(".main-section");
 let player1 = true;
 let space = document.querySelectorAll(".space");
 let oneEle = document.querySelectorAll(".line-one");
-
 let twoEle = document.querySelectorAll(".line-two");
-
+let winner_section = document.querySelector(".winner");
 let threeEle = document.querySelectorAll(".line-three");
+let winnerName = document.querySelector("h1");
 let one = [];
 let two = [];
 let three = [];
@@ -20,6 +20,12 @@ function listofentry() {
   ];
 }
 
+function winnerSelect(message) {
+  mainSection.classList.add("hidden");
+  winner_section.classList.remove("hidden");
+  winnerName.textContent = message;
+}
+
 function winCheck() {
   if (
     (one[0] === "0" && one[1] === "0" && one[2] === "0") ||
@@ -31,7 +37,7 @@ function winCheck() {
     (one[0] === "0" && two[1] === "0" && three[2] === "0") ||
     (one[2] === "0" && two[1] === "0" && three[0] === "0")
   ) {
-    console.log("player1 win");
+    winnerSelect("Player One Winner");
   } else if (
     (one[0] === "×" && one[1] === "×" && one[2] === "×") ||
     (two[0] === "×" && two[1] === "×" && two[2] === "×") ||
@@ -42,7 +48,7 @@ function winCheck() {
     (one[0] === "×" && two[1] === "×" && three[2] === "×") ||
     (one[2] === "×" && two[1] === "×" && three[0] === "×")
   ) {
-    console.log("player 2 win");
+    winnerSelect("Player Two Winner");
   } else if (
     one[0] != "" &&
     one[1] != "" &&
@@ -54,7 +60,7 @@ function winCheck() {
     three[1] != "" &&
     three[2] != ""
   ) {
-    console.log("math draw");
+    winnerSelect("Match Draw");
   }
 }
 
